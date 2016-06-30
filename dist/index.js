@@ -1,0 +1,92 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ApplicationBeanProvider = ApplicationBeanProvider;
+exports.Inject = Inject;
+exports.InjectBean = InjectBean;
+
+var _Context = require('Context');
+
+var _Context2 = _interopRequireDefault(_Context);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var context = void 0;
+
+function ApplicationBeanProvider(clazz) {
+  if (context !== undefined) {
+    throw new Error('Application bean provider already initialized');
+  }
+
+  context = new _Context2.default();
+
+  var beanProvider = new clazz();
+  var beansCreators = beanProvider.provide();
+  context.setBeanCreators(beanCreators);
+
+  console.log('Bean provider, provided: ', beansCreators);
+  return function (clazz) {
+    return clazz;
+  };
+}
+
+// export function provideBean(name, clazz) {
+//   if (beansCreators[name] !== undefined) {
+//     throw new Error('bean name conflict');
+//   }
+//   beansCreators[name] = clazz;
+// }
+
+function Inject(deps) {
+  deps = deps || [];
+
+  return function (clazz) {
+    var constructor = function constructor() {
+      var _this = this;
+
+      // inject beans from deps
+      deps.forEach(function (d) {
+        var bean = context.getBean(d);
+        Object.defineProperty(_this, d, { value: bean });
+      });
+
+      // inject from mehod meta information
+      Reflect.ownKeys(clazz.prototype).forEach(function (k) {
+        if (typeof clazz.prototype[k] == 'function') {
+          var injectName = clazz.prototype[k].__injectName;
+
+          if (injectName !== undefined) {
+            var bean = context.getBean(injectName);
+            clazz.prototype[k].apply(proto, [bean]);
+          }
+        }
+      });
+
+      clazz.prototype.constructor.apply(this, arguments);
+    };
+
+    inherits(constructor, clazz);
+    return constructor;
+  };
+}
+
+function InjectBean(name) {
+  return function (target, prop, descriptor) {
+    descriptor.value.__injectName = name;
+  };
+}
+
+function inherits(subClass, superClass) {
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+
+  Object.setPrototypeOf(subClass, superClass);
+}

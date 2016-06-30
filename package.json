@@ -1,0 +1,24 @@
+{
+  "name": "booter-di",
+  "version": "0.1.1",
+  "description": "Booter dependency injection",
+  "main": "dist/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.t1.tenet:mykola.shyshov/booter-di.git"
+  },
+  "author": "Nick Shishov",
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "registry": "http://nexus.t1.tenet/nexus/content/repositories/npm-hosted/"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13"
+  }
+}
