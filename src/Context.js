@@ -21,6 +21,10 @@ export default class Context {
     return this.beans[name];
   }
 
+  provideBean(name, obj) {
+    this.beans[name] = obj;
+  }
+
   setBeanCreators(beanCreators) {
     this.beanCreators= beanCreators;
   }

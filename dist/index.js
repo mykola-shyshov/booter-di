@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.context = undefined;
 exports.ApplicationBeanProvider = ApplicationBeanProvider;
 exports.Inject = Inject;
 exports.InjectBean = InjectBean;
@@ -14,15 +15,9 @@ var _Context2 = _interopRequireDefault(_Context);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var context = void 0;
+var context = new _Context2.default();
 
 function ApplicationBeanProvider(clazz) {
-  if (context !== undefined) {
-    throw new Error('Application bean provider already initialized');
-  }
-
-  context = new _Context2.default();
-
   var beanProvider = new clazz();
   var beanCreators = beanProvider.provide();
 
@@ -83,6 +78,9 @@ function InjectBean(name) {
 function getBean(name) {
   return context.getBean(name);
 }
+
+exports.context = context;
+
 
 function inherits(subClass, superClass) {
   subClass.prototype = Object.create(superClass && superClass.prototype, {

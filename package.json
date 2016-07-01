@@ -1,6 +1,6 @@
 {
   "name": "booter-di",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Booter dependency injection",
   "main": "dist/index.js",
   "scripts": {},

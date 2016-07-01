@@ -1,14 +1,8 @@
 import Context from './Context';
 
-let context;
+let context = new Context();
 
 export function ApplicationBeanProvider(clazz) {
-  if (context !== undefined) {
-    throw new Error('Application bean provider already initialized');
-  }
-
-  context = new Context();
-
   let beanProvider = new clazz();
   let beanCreators = beanProvider.provide();
 
@@ -68,6 +62,8 @@ export function InjectBean(name) {
 export function getBean(name) {
   return context.getBean(name);
 }
+
+export {context};
 
 function inherits(subClass, superClass) {
   subClass.prototype = Object.create(
