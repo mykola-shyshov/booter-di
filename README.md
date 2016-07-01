@@ -3,10 +3,10 @@ Booter dependency injection
 
 ## Spring aka DI
 
-#### Run & build
+#### build
 ```
 npm install
-npm run build;
+npm build;
 ```
 
 #### Changelog:  
