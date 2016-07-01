@@ -10,10 +10,11 @@ export function ApplicationBeanProvider(clazz) {
   context = new Context();
 
   let beanProvider = new clazz();
-  let beansCreators = beanProvider.provide();
+  let beanCreators = beanProvider.provide();
+
   context.setBeanCreators(beanCreators);
 
-  console.log('Bean provider, provided: ', beansCreators);
+  console.log('Bean provider, provided: ', beanCreators);
   return function(clazz) {
     return clazz;
   };
@@ -45,7 +46,7 @@ export function Inject(deps) {
 
           if (injectName !== undefined) {
             let bean = context.getBean(injectName);
-            clazz.prototype[k].apply(proto, [bean]);
+            clazz.prototype[k].apply(this, [bean]);
           }
         }
       });
@@ -64,6 +65,10 @@ export function InjectBean(name) {
   };
 }
 
+export function getBean(name) {
+  return context.getBean(name);
+}
+
 function inherits(subClass, superClass) {
   subClass.prototype = Object.create(
     superClass && superClass.prototype,
@@ -79,3 +84,4 @@ function inherits(subClass, superClass) {
 
   Object.setPrototypeOf(subClass, superClass);
 }
+

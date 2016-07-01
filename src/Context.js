@@ -13,7 +13,7 @@ export default class Context {
         throw new Error('bean is not provided, name: ' + name);
       }
 
-      let bean = beansCreators[name].call(beanProvider);
+      let bean = this.beanCreators[name].call();
       console.log('bean created: ' + name);
 
       this.beans[name] = bean;

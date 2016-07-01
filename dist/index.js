@@ -6,8 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.ApplicationBeanProvider = ApplicationBeanProvider;
 exports.Inject = Inject;
 exports.InjectBean = InjectBean;
+exports.getBean = getBean;
 
-var _Context = require('Context');
+var _Context = require('./Context');
 
 var _Context2 = _interopRequireDefault(_Context);
 
@@ -23,10 +24,11 @@ function ApplicationBeanProvider(clazz) {
   context = new _Context2.default();
 
   var beanProvider = new clazz();
-  var beansCreators = beanProvider.provide();
+  var beanCreators = beanProvider.provide();
+
   context.setBeanCreators(beanCreators);
 
-  console.log('Bean provider, provided: ', beansCreators);
+  console.log('Bean provider, provided: ', beanCreators);
   return function (clazz) {
     return clazz;
   };
@@ -59,7 +61,7 @@ function Inject(deps) {
 
           if (injectName !== undefined) {
             var bean = context.getBean(injectName);
-            clazz.prototype[k].apply(proto, [bean]);
+            clazz.prototype[k].apply(_this, [bean]);
           }
         }
       });
@@ -76,6 +78,10 @@ function InjectBean(name) {
   return function (target, prop, descriptor) {
     descriptor.value.__injectName = name;
   };
+}
+
+function getBean(name) {
+  return context.getBean(name);
 }
 
 function inherits(subClass, superClass) {
