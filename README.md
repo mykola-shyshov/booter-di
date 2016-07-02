@@ -6,7 +6,7 @@ Booter DI (sub-project)
 Main idea of `Booter` project. 
 
 I khnow that for now we have a lot of "boot" react, redux, reflax projects.  
-But I met problem with starting development new applicatin based on that projects. I really like `spring boot` (It's java:)) project. From box you will get logging, running, testing, configuraions features.  
+But I met problem with starting development new applicatin based on that projects. I really like `spring boot` (It's java:)) project. From box you will get logging, running, testing, configuraion features.  
 So aim of this project is to be as close as possible to `spring boot` mission. 
 
 Modern applications need some common tools:
@@ -15,8 +15,7 @@ Modern applications need some common tools:
 * Running & building tools
 * App security solutions
 * Test environment and runners
-
-For now it will be specific for react/redux applictions. 
+* so on
 
 Booter dependency injection
 ------
