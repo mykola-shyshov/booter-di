@@ -51,15 +51,64 @@ For example `http` library can be configured for client and server application i
 
 #### Using 
 
-So, how it works.
+So, how it works.  
+Termin bean means object instance.  
+
+So our application will have one main class(entry point). Lets give name `Application`. And for this application we will have set of beans. This beans must be provided in next way:
+
+```
+@ApplicationBeanProvider(BeanProvider)
+class MyApp {
+  run() {
+  }
+}
+```
+
+Where `BeanProvider` is class with method `provide`: 
+```
+class BeanProvider {
+  provide() {
+    return {
+      'http': () => {
+      }
+    }
+  }
+}
+```
+
+Okey, now we have declared set of beans and Application class. We will use `MyApp` in next way:
+```
+let app = new MyApp()
+app.run();
+```
+Yep, app instance is created. Let's inject some bean into class:
+
+```
+```
 
 
-#### build
 
-#### build
+#### Reference. Top API.
+
+###### `ApplicationBeanProvider`
+Decorator for setting application bean provider.  
+
+Usage:
+```
+@ApplicationBeanProvider(BeanProvider)
+class MyClass {}
+```
+BeanProvider is a class with at least one method `provide`.  
+Example 
+
+###### `Inject`  
+
+###### `InjectBean`  
+
+#### Build `booter-di`
 ```
 npm install
-npm build;
+npm build
 ```
 
 #### Changelog:  
