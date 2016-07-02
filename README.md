@@ -1,4 +1,4 @@
-Booter sub-project 
+Booter DI (sub-project)
 ======
 
 Main idea of `Booter` project. 
