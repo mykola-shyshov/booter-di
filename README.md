@@ -1,3 +1,5 @@
+[[https://github.com/okonkwo/booter-di/blob/master/doc/hr.png|alt=booter]]  
+
 Booter DI (sub-project)
 ======
 
