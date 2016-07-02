@@ -114,7 +114,7 @@ Under the hood injector will create bean and "save" it into cashe. Every beans a
 
 ## Reference. Top API.
 
-#### `ApplicationBeanProvider`
+#### `@ApplicationBeanProvider`
 Decorator for setting application bean provider.  
 
 Usage:
@@ -136,7 +136,7 @@ class BeanProvider {
 }
 ```
 
-#### `Inject`  
+#### `@Inject`  
 Decorator mark class. In that class will be injected required beans.   
 Example:
 ```js
@@ -151,7 +151,7 @@ class BeanProvider {
 }
 ```
 
-#### `InjectBean`  
+#### `@InjectBean`  
 Decorator mark class method as bean setter.  
 Example:
 ```js
