@@ -110,7 +110,7 @@ class SomeClass {
 }
 ```
 And beans will be injected successfuly.  
-Under the hood injector will create bean and "save" it into cashe. Every beans are singletons.   
+Under the hood injector will create bean and "save" it into cache. Every beans are singletons.   
 
 ## Reference. Top API.
 
