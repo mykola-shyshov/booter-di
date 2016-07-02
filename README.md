@@ -85,7 +85,7 @@ app.run();
 Yep, app instance is created. Let's inject some bean into class:
 
 ```
-Inject()
+@Inject()
 class SomeClass {
   @InjectBean('apiClient')
   setHttp(client) {
@@ -99,7 +99,7 @@ class SomeClass {
 ```
 or just: 
 ```
-Inject([
+@Inject([
   'apiClient'
 ])
 class SomeClass {
