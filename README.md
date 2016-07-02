@@ -122,7 +122,7 @@ Usage:
 @ApplicationBeanProvider(BeanProvider)
 class MyClass {}
 ```
-BeanProvider is a class with at least one method `provide`.  
+`BeanProvider` is a class with at least one method `provide`.  
 Example:
 ```js
 class BeanProvider {
@@ -137,7 +137,7 @@ class BeanProvider {
 ```
 
 #### `@Inject`  
-Decorator mark class. In that class will be injected required beans.   
+Decorator that marks class. In that class will be injected required beans.   
 Example:
 ```js
 @Inject()
