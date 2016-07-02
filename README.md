@@ -1,4 +1,4 @@
-[[https://github.com/okonkwo/booter-di/blob/master/doc/hr.png|alt=booter]]  
+<img src="https://raw.githubusercontent.com/okonkwo/booter-di/master/doc/hr.png" width="150" height="150" />
 
 Booter DI (sub-project)
 ======
