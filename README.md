@@ -26,7 +26,7 @@ For now I will describe universal applicatation.
 It's simple to understand, we really have 2 applications: Server and Client. And that applications have different entry poins(main functions or classes).
 
 Also sometimes they depends on different libraries (evironment is different). And we have to resolve this issue. For me is ugly way to try solve this by next approache:
-```
+```js
 import superagent from 'superagent';
 import config from '../config';
 
@@ -56,7 +56,7 @@ Termin bean means object instance.
 
 So our application will have one main class(entry point). Lets give name `Application`. And for this application will have set of beans. This beans must be provided in next way:
 
-```
+```js
 @ApplicationBeanProvider(BeanProvider)
 class MyApp {
   run() {
@@ -65,7 +65,7 @@ class MyApp {
 ```
 
 Where `BeanProvider` is class with method `provide`: 
-```
+```js
 class BeanProvider {
   provide() {
     return {
@@ -77,14 +77,14 @@ class BeanProvider {
 ```
 
 Okey, now we have declared set of beans and Application class. We will use `MyApp` in next way:
-```
+```js
 let app = new MyApp()
 app.run();
 ```
 
 Yep, app instance is created. Let's inject some bean into class:
 
-```
+```js
 @Inject()
 class SomeClass {
   @InjectBean('apiClient')
@@ -98,7 +98,7 @@ class SomeClass {
 }
 ```
 or just: 
-```
+```js
 @Inject([
   'apiClient'
 ])
@@ -118,7 +118,7 @@ And beans will be injected successfuly.
 Decorator for setting application bean provider.  
 
 Usage:
-```
+```js
 @ApplicationBeanProvider(BeanProvider)
 class MyClass {}
 ```
