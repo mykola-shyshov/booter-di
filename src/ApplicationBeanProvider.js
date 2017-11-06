@@ -1,14 +1,13 @@
 import ApplicationContext from './ApplicationContext';
 
-export default function ApplicationBeanProvider(clazz) {
+export default function ApplicationBeanProvider(clazz, options = {}) {
   let beanProvider = new clazz();
   let beanCreators = beanProvider.provide();
 
-  ApplicationContext.getContext().setBeanCreators(beanCreators);
+  ApplicationContext.getContext(options).setBeanCreators(beanCreators);
 
-  console.log('Bean provider, provided: ', beanCreators);
+  options.debug && console.log('Bean provider, provided: ', beanCreators);
   return function(clazz) {
     return clazz;
   };
 }
-

@@ -1,5 +1,6 @@
 export default class Context {
-  constructor() {
+  constructor(options) {
+    this.options = options;
     this.beans = {};
   }
 
@@ -14,7 +15,7 @@ export default class Context {
       }
 
       let bean = this.beanCreators[name].call();
-      console.log('bean created: ' + name);
+      this.options.debug && console.log('bean created: ' + name);
 
       this.beans[name] = bean;
     }
@@ -29,4 +30,3 @@ export default class Context {
     this.beanCreators= beanCreators;
   }
 }
-
