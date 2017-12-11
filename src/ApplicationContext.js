@@ -10,7 +10,7 @@ export default class ApplicationContext {
     return this.context;
   }
 
-  static getContext(options) {
+  static getContext(options = {}) {
     if (this.applicationContext == undefined) {
       this.applicationContext = new ApplicationContext(options);
     }
