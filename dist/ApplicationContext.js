@@ -15,10 +15,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ApplicationContext = function () {
-  function ApplicationContext() {
+  function ApplicationContext(options) {
     _classCallCheck(this, ApplicationContext);
 
-    this.context = new _Context2.default();
+    this.context = new _Context2.default(options);
   }
 
   _createClass(ApplicationContext, [{
@@ -28,9 +28,9 @@ var ApplicationContext = function () {
     }
   }], [{
     key: 'getContext',
-    value: function getContext() {
+    value: function getContext(options) {
       if (this.applicationContext == undefined) {
-        this.applicationContext = new ApplicationContext();
+        this.applicationContext = new ApplicationContext(options);
       }
       return this.applicationContext.getContext();
     }

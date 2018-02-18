@@ -119,7 +119,7 @@ Decorator for setting application bean provider.
 
 Usage:
 ```js
-@ApplicationBeanProvider(BeanProvider)
+@ApplicationBeanProvider(BeanProvider, config)
 class MyClass {}
 ```
 `BeanProvider` is a class with at least one method `provide`.  
@@ -135,6 +135,9 @@ class BeanProvider {
   }
 }
 ```
+`config` can contain:
+
+`debug` (default - `false`) - to log into console debug info
 
 #### `@Inject`  
 Decorator that marks class. In that class will be injected required beans.   

@@ -2,20 +2,19 @@ import Context from './Context';
 
 export default class ApplicationContext {
 
-  constructor() {
-    this.context = new Context();
+  constructor(options) {
+    this.context = new Context(options);
   }
 
   getContext() {
     return this.context;
   }
 
-  static getContext() {
+  static getContext(options = {}) {
     if (this.applicationContext == undefined) {
-      this.applicationContext = new ApplicationContext();
+      this.applicationContext = new ApplicationContext(options);
     }
     return this.applicationContext.getContext();
   }
 
 }
-

@@ -9,9 +9,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Context = function () {
-  function Context() {
+  function Context(options) {
     _classCallCheck(this, Context);
 
+    this.options = options;
     this.beans = {};
   }
 
@@ -29,7 +30,7 @@ var Context = function () {
         }
 
         var bean = this.beanCreators[name].call();
-        console.log('bean created: ' + name);
+        this.options.debug && console.log('bean created: ' + name);
 
         this.beans[name] = bean;
       }
